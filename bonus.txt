@@ -1,0 +1,7 @@
+#in this case I recommend:
+#1. connect from my_host to my-gw-01.srv.dc2 by ssh
+#2. after that create ssh tunnel with port forwarding between my-gw-01.srv.dc2 and  my-private-db.srv.dc2
+#3. connect to mysql via this tunnel  
+my_host#ssh root@my-gw-01.srv.dc2
+root@my-gw-01.srv.dc2#ssh -L 123:localhost:3306 root@my-private-db.srv.dc2
+root@my-gw-01.srv.dc2#mysql -h localhost:123 -u user -p
